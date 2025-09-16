@@ -38,15 +38,16 @@ with col[1]:
     df_satisfaction = df.groupby('genres')['rating'].mean().reset_index()
     
     
-    
     fig, ax = plt.subplots()
 
-    # Create the lineplot
-    sns.barplot(data=df_satisfaction, x="rating", y="genre",ax=ax)
+    # Create the barplot
+    sns.barplot(data=df_satisfaction, x="rating", y="genre", ax=ax)
 
-    # Show in Streamlit
+    # Optional: add title or adjust layout
+    ax.set_title("Average Rating by Genre")
+
+    # Display in Streamlit
     st.pyplot(fig)
-
 
 
     st.markdown('#### Viewer Satisfaction by Genre')
