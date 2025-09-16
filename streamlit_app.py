@@ -32,21 +32,6 @@ col = st.columns((3.5,4.5), gap='medium')
 with col[0]:
     st.markdown('#### Genre Breakdown')
 
-    st.dataframe(df_genre,
-                 width="stretch",
-                 height="auto",
-                column_order=("genres", "count"),
-                hide_index=True,
-                column_config={
-                    "genres": st.column_config.TextColumn(
-                        "Genre",
-                    ),
-                    "count": st.column_config.ProgressColumn(
-                        "Number of Movies Reviewed",
-                        format="%f",
-                        min_value=0,
-                        max_value=df_genre['count'].max(),
-                     )}
-                 )
+    st.dataframe(df_genre)
 
     
