@@ -42,7 +42,7 @@ with col[0]:
     )
 
     st.subheader("Top 5 Movies with at least 50 Ratings")
-    t.dataframe(top_5_50)
+    st.dataframe(top_5_50)
 
     st.subheader("Top 5 Movies with at least 150 Ratings")
     st.dataframe(top_5_150)
