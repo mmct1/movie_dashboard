@@ -17,11 +17,11 @@ df_genre=pd.read_csv('./data/genre_data.csv')
 with st.sidebar:
     st.title('🍿 ReelData 🍿')
     
-    year_list = list(df.decade.unique())[::-1]
+    genre_list = list(df.genres.unique())[::-1]
     
-    selected_year = st.selectbox('Select a decade', year_list, index=len(year_list)-1)
-    df_selected_year = df[df.decade == selected_year]
-    df_selected_year_sorted = df_selected_year.sort_values(by="rating", ascending=False)
+    selected_genre = st.selectbox('Select a genre', genre_list, index=len(genre_list)-1)
+    df_selected_genre = df[df.genres == selected_genre]
+    df_selected_year_genre = df_selected_genre.sort_values(by="rating", ascending=False)
 
     color_theme_list = ['blues', 'cividis', 'greens', 'inferno', 'magma', 'plasma', 'reds', 'rainbow', 'turbo', 'viridis']
     selected_color_theme = st.selectbox('Select a color theme', color_theme_list)
@@ -30,8 +30,14 @@ with st.sidebar:
 col = st.columns((1.5,3.5,2), gap='medium')
 
 with col[0]:
+    st.markdown('#### Top Rated')
+
+with col[1]:
+    st.markdown('#### Movie Ratings Over Time')
+
+    st.markdown('#### Viewer Satisfaction by Genre')
+
+with col[2]:
     st.markdown('#### Genre Breakdown')
 
-    st.dataframe(df_genre, hide_index="True", height=400)
-
-    
+    st.dataframe(df_genre, hide_index="True")
