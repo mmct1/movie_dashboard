@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import altair as alt
 import squarify
-import born as sns
+import seaborn as sns
 
 st.set_page_config(
     page_title="ReelData",
