@@ -56,7 +56,7 @@ with col[1]:
     fig2, ax2 = plt.subplots()
 
     # Create the lineplot
-    sns.lineplot(x="decade", y="rating", data=df_satisfaction, ax=ax2)
+    sns.lineplot(x="decade", y="rating", data=df_decade, ax=ax2)
 
     # Rotate x-axis labels
     plt.xticks(rotation=25)
