@@ -41,7 +41,7 @@ with col[1]:
     fig1, ax1 = plt.subplots()
 
     # Create the barplot
-    sns.barplot(data=df_satisfaction, x="rating", y="genres", ax=ax1)
+    sns.barplot(data=df_satisfaction, x="rating", y="genres", ax=ax1, color='r')
 
     # Optional: add title or adjust layout
 
@@ -56,7 +56,7 @@ with col[1]:
     fig2, ax2 = plt.subplots()
 
     # Create the lineplot
-    sns.lineplot(x="decade", y="rating", data=df_decade, ax=ax2)
+    sns.lineplot(x="decade", y="rating", data=df_decade, ax=ax2, color='r')
 
     # Rotate x-axis labels
     plt.xticks(rotation=25)
