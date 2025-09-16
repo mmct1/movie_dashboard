@@ -11,7 +11,7 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded")
 
-df = pd.read_csv('./data/movie_ratings.csv')
+df = pd.read_csv('./data/movie_data_reshaped.csv')
 df_genre=pd.read_csv('./data/genre_data.csv')
 
 with st.sidebar:
