@@ -27,25 +27,24 @@ with st.sidebar:
     selected_color_theme = st.selectbox('Select a color theme', color_theme_list)
 
 #genre breakdown
-def make_treemap():
+def make_barplot():
     # Streamlit Title
     st.title("Seaborn Bar Plot in Streamlit")
 
     # Create the plot
     fig, ax = plt.subplots()
-    sns.barplot(data=df_genre, x='count', y='genre', ax=ax)
+    sns.barplot(data=df_genre, x='count', y='genre', ax=ax, palette='muted')
 
-    # Optional: Customize
-    ax.set_title("Simple Bar Plot")
-    ax.set_xlabel("Category")
-    ax.set_ylabel("Value")
+    # Customize axes
+    ax.set_title("Genre Count")
+    ax.set_xlabel("Count")
+    ax.set_ylabel("Genre")
 
     # Show in Streamlit
     st.pyplot(fig)
-
 col = st.columns((3.5,4.5), gap='medium')
 
 with col[0]:
     st.markdown('#### Genre Breakdown')
 
-    make_treemap()
+    make_barplot()
