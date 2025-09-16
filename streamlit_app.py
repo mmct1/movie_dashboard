@@ -33,24 +33,36 @@ with col[0]:
     st.markdown('#### Top Rated')
 
 with col[1]:
-    st.markdown('#### Movie Ratings By Genre')
+    st.markdown('#### Mean Movie Ratings By Genre')
     #mean rating by genre
     df_satisfaction = df.groupby('genres')['rating'].mean().reset_index()
     
     
-    fig, ax = plt.subplots()
+    fig1, ax1 = plt.subplots()
 
     # Create the barplot
-    sns.barplot(data=df_satisfaction, x="rating", y="genres", ax=ax)
+    sns.barplot(data=df_satisfaction, x="rating", y="genres", ax=ax1)
 
     # Optional: add title or adjust layout
-    ax.set_title("Average Rating by Genre")
 
     # Display in Streamlit
-    st.pyplot(fig)
+    st.pyplot(fig1)
 
 
-    st.markdown('#### Viewer Satisfaction by Genre')
+    st.markdown('#### Viewer Satisfaction Across Release Years')
+    df_decade = df.groupby('decade')['rating'].mean().reset_index()
+
+    # Create the figure and axes
+    fig2, ax2 = plt.subplots()
+
+    # Create the lineplot
+    sns.lineplot(x="decade", y="rating", data=df_satisfaction, ax=ax2)
+
+    # Rotate x-axis labels
+    plt.xticks(rotation=25)
+
+    # Show in Streamlit
+    st.pyplot(fig2)
 
 with col[2]:
     st.markdown('#### Genre Breakdown')
