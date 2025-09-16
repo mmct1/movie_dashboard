@@ -33,7 +33,11 @@ with col[0]:
     st.markdown('#### Genre Breakdown')
 
     st.dataframe(df_genre,
+                 width="strectch",
+                 height="auto",
                 column_order=("genres", "count"),
+
+
                 hide_index=True,
                 width="stretch",
                 column_config={
@@ -44,7 +48,7 @@ with col[0]:
                         "Number of Movies Reviewed",
                         format="%f",
                         min_value=0,
-                        max_value=max(df_genre.count),
+                        max_value=df_genre['count'].max(),
                      )}
                  )
 
