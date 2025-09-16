@@ -33,19 +33,21 @@ with col[0]:
     st.markdown('#### Top Rated')
 
 with col[1]:
-    st.markdown('#### Movie Ratings Over Time')
+    st.markdown('#### Movie Ratings By Genre')
     #mean rating by genre
     df_satisfaction = df.groupby('genres')['rating'].mean().reset_index()
+    
+    
+    
     fig, ax = plt.subplots()
 
     # Create the lineplot
-    sns.lineplot(x="genres", y="rating", data=df_satisfaction, ax=ax)
-
-    # Rotate x-axis labels
-    plt.xticks(rotation=25)
+    sns.barplot(data=df_satisfaction, x="rating", y="genre",ax=ax)
 
     # Show in Streamlit
     st.pyplot(fig)
+
+
 
     st.markdown('#### Viewer Satisfaction by Genre')
 
