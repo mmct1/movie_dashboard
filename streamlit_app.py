@@ -27,11 +27,11 @@ with st.sidebar:
     selected_color_theme = st.selectbox('Select a color theme', color_theme_list)
 
 
-col = st.columns((3.5,4.5), gap='medium')
+col = st.columns((1.5,3.5,2), gap='medium')
 
 with col[0]:
     st.markdown('#### Genre Breakdown')
 
-    st.dataframe(df_genre)
+    st.dataframe(df_genre, hide_index="True")
 
     
