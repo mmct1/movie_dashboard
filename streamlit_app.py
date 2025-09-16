@@ -34,6 +34,11 @@ with col[0]:
 
 with col[1]:
     st.markdown('#### Movie Ratings Over Time')
+    #mean rating by genre
+    df_satisfaction = df.groupby('genres')['rating'].mean().reset_index()
+
+    sns.lineplot(x = "genres", y = "rating", data = df_satisfaction)
+    plt.xticks(rotation = 25)
 
     st.markdown('#### Viewer Satisfaction by Genre')
 
