@@ -7,7 +7,7 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded")
 
-df=pd.readcsv('./data/movie_ratings.csv')
+df = pd.read_csv('./data/movie_ratings.csv')
 
 with st.sidebar:
     st.title('🍿 ReelData 🍿')
