@@ -22,6 +22,31 @@ col = st.columns((1.5,3.5,2), gap='medium')
 with col[0]:
     st.markdown('#### Top Rated')
 
+    movie_stats = df.groupby('movie_id').agg(
+    average_rating=('rating', 'mean'),
+    rating_count=('rating', 'count')
+    ).reset_index()
+
+    # 5 best-rated movies with at least 50 ratings
+    top_5_50 = (
+        movie_stats[movie_stats['rating_count'] >= 50]
+        .sort_values(by='average_rating', ascending=False)
+        .head(5)
+    )
+
+    # 5 best-rated movies with at least 150 ratings
+    top_5_150 = (
+        movie_stats[movie_stats['rating_count'] >= 150]
+        .sort_values(by='average_rating', ascending=False)
+        .head(5)
+    )
+
+    st.subheader("Top 5 Movies with at least 50 Ratings")
+    t.dataframe(top_5_50)
+
+    st.subheader("Top 5 Movies with at least 150 Ratings")
+    st.dataframe(top_5_150)
+
 with col[1]:
     st.markdown('#### Mean Movie Ratings By Genre')
     #mean rating by genre
