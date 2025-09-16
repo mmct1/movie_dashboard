@@ -27,7 +27,7 @@ with st.sidebar:
     selected_color_theme = st.selectbox('Select a color theme', color_theme_list)
 
 #genre breakdown
-def make_treemap(input_df, input_col, input_color_thm):
+def make_treemap():
     # Streamlit Title
     st.title("Seaborn Bar Plot in Streamlit")
 
@@ -48,5 +48,4 @@ col = st.columns((3.5,4.5), gap='medium')
 with col[0]:
     st.markdown('#### Genre Breakdown')
 
-    treemap = make_treemap(df, 'genres',  selected_color_theme)
-    st.altair_chart(treemap, use_container_width=True)
+    make_treemap()
