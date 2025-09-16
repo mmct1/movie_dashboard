@@ -33,7 +33,7 @@ with col[0]:
     st.markdown('#### Genre Breakdown')
 
     st.dataframe(df_genre,
-                 width="strectch",
+                 width="stretch",
                  height="auto",
                 column_order=("genres", "count"),
                 hide_index=True,
