@@ -32,6 +32,6 @@ col = st.columns((1.5,3.5,2), gap='medium')
 with col[0]:
     st.markdown('#### Genre Breakdown')
 
-    st.dataframe(df_genre, hide_index="True")
+    st.dataframe(df_genre, hide_index="True", height=400)
 
     
