@@ -26,25 +26,26 @@ with st.sidebar:
     color_theme_list = ['blues', 'cividis', 'greens', 'inferno', 'magma', 'plasma', 'reds', 'rainbow', 'turbo', 'viridis']
     selected_color_theme = st.selectbox('Select a color theme', color_theme_list)
 
-#genre breakdown
-def make_barplot():
-    # Streamlit Title
-    st.title("Seaborn Bar Plot in Streamlit")
 
-    # Create the plot
-    fig, ax = plt.subplots()
-    sns.barplot(data=df_genre, x='count', y='genre', ax=ax, palette='muted')
-
-    # Customize axes
-    ax.set_title("Genre Count")
-    ax.set_xlabel("Count")
-    ax.set_ylabel("Genre")
-
-    # Show in Streamlit
-    st.pyplot(fig)
 col = st.columns((3.5,4.5), gap='medium')
 
 with col[0]:
     st.markdown('#### Genre Breakdown')
 
-    make_barplot()
+    st.dataframe(df_selected_year_sorted,
+                column_order=("genres", "count"),
+                hide_index=True,
+                width="stretch",
+                column_config={
+                    "genres": st.column_config.TextColumn(
+                        "Genre",
+                    ),
+                    "count": st.column_config.ProgressColumn(
+                        "# Movies Reviewed",
+                        format="%f",
+                        min_value=0,
+                        max_value=max(df_selected_year_sorted.population),
+                     )}
+                 )
+
+    
