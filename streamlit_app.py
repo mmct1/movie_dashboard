@@ -16,16 +16,6 @@ df_genre=pd.read_csv('./data/genre_data.csv')
 
 with st.sidebar:
     st.title('🍿 ReelData 🍿')
-    
-    genre_list = list(df.genres.unique())[::-1]
-    
-    selected_genre = st.selectbox('Select a genre', genre_list, index=len(genre_list)-1)
-    df_selected_genre = df[df.genres == selected_genre]
-    df_selected_year_genre = df_selected_genre.sort_values(by="rating", ascending=False)
-
-    color_theme_list = ['blues', 'cividis', 'greens', 'inferno', 'magma', 'plasma', 'reds', 'rainbow', 'turbo', 'viridis']
-    selected_color_theme = st.selectbox('Select a color theme', color_theme_list)
-
 
 col = st.columns((1.5,3.5,2), gap='medium')
 
