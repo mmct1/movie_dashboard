@@ -11,6 +11,7 @@ st.set_page_config(
     initial_sidebar_state="expanded")
 
 df = pd.read_csv('./data/movie_ratings.csv')
+df_genre=pd.read_csv('./data/genre_data.csv')
 
 with st.sidebar:
     st.title('🍿 ReelData 🍿')
@@ -26,7 +27,7 @@ with st.sidebar:
 
 #genre breakdown
 def make_treemap(input_df, input_col, input_color_thm):
-    normed = squarify.normalize_sizes(df['count'], 100, 100)
+    normed = squarify.normalize_sizes(df_genre['count'], 100, 100)
     rects = squarify.squarify(normed, 0, 0, 100, 100)
 
     # Add rectangle info to the dataframe
