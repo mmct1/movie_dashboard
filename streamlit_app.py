@@ -36,10 +36,7 @@ with col[0]:
                  width="strectch",
                  height="auto",
                 column_order=("genres", "count"),
-
-
                 hide_index=True,
-                width="stretch",
                 column_config={
                     "genres": st.column_config.TextColumn(
                         "Genre",
