@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import altair as alt
 import squarify
+import seaborn as sns
 
 st.set_page_config(
     page_title="ReelData",
@@ -27,38 +28,20 @@ with st.sidebar:
 
 #genre breakdown
 def make_treemap(input_df, input_col, input_color_thm):
-    normed = squarify.normalize_sizes(df_genre['count'], 100, 100)
-    rects = squarify.squarify(normed, 0, 0, 100, 100)
+    # Streamlit Title
+    st.title("Seaborn Bar Plot in Streamlit")
 
-    # Add rectangle info to the dataframe
-    for i, r in enumerate(rects):
-        df.loc[i, 'x'] = r['x']
-        df.loc[i, 'y'] = r['y']
-        df.loc[i, 'dx'] = r['dx']
-        df.loc[i, 'dy'] = r['dy']
+    # Create the plot
+    fig, ax = plt.subplots()
+    sns.barplot(data=df_genre, x='count', y='genre', ax=ax)
 
-    # Create Altair treemap
-    treemap = alt.Chart(df).mark_rect().encode(
-        x=alt.X('x:Q', scale=alt.Scale(domain=[0, 100])),
-        y=alt.Y('y:Q', scale=alt.Scale(domain=[0, 100])),
-        x2='x2:Q',
-        y2='y2:Q',
-        color='category:N',
-        tooltip=['category', 'value']
-    ).properties(
-        width=600,
-        height=400,
-        title="Altair Treemap"
-    )
+    # Optional: Customize
+    ax.set_title("Simple Bar Plot")
+    ax.set_xlabel("Category")
+    ax.set_ylabel("Value")
 
-    # Add calculated x2, y2 (bottom right corner)
-    df['x2'] = df['x'] + df['dx']
-    df['y2'] = df['y'] + df['dy']
-
-    st.title("Altair Treemap in Streamlit")
-    st.altair_chart(treemap, use_container_width=True)
-
-col = st.columns((3.5, 4.5), gap='medium')
+    # Show in Streamlit
+    st.pyplot(fig)
 
 with col[0]:
     st.markdown('#### Genre Breakdown')
