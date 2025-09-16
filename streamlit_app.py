@@ -43,6 +43,8 @@ def make_treemap(input_df, input_col, input_color_thm):
     # Show in Streamlit
     st.pyplot(fig)
 
+col = st.columns((3.5,4.5), gap='medium')
+
 with col[0]:
     st.markdown('#### Genre Breakdown')
 
