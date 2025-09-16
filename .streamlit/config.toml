@@ -1,9 +1,9 @@
 [theme]
-primaryColor = "#1a9568ff"
-# backgroundColor = "#1e3849ff"
-backgroundColor = "#1e3849ff"
-# secondaryBackgroundColor = "#376c8dff"
-secondaryBackgroundColor = "#376c8dff"
+primaryColor = "#000000ff"
+# backgroundColor = "#960d0dff"
+backgroundColor = "#960d0dff"
+# secondaryBackgroundColor = "#c7880aff"
+secondaryBackgroundColor = "#c7880aff"
 textColor = "#fafafa"
 font = "Gill Sans"
 
