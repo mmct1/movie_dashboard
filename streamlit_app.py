@@ -27,56 +27,37 @@ with col[0]:
     rating_count=('rating', 'count')
     ).reset_index()
 
-    # 5 best-rated movies with at least 50 ratings
     top_5_50 = (
         movie_stats[movie_stats['rating_count'] >= 50]
         .sort_values(by='average_rating', ascending=False)
         .head(5)
     )
 
-    # 5 best-rated movies with at least 150 ratings
     top_5_150 = (
         movie_stats[movie_stats['rating_count'] >= 150]
         .sort_values(by='average_rating', ascending=False)
         .head(5)
     )
 
-    st.subheader("Top 5 Movies with at least 50 Ratings")
+    st.subheader("Top 5 Movies (with at least 50 Ratings)")
     st.dataframe(top_5_50,hide_index="True")
 
-    st.subheader("Top 5 Movies with at least 150 Ratings")
+    st.subheader("Top 5 Movies (with at least 150 Ratings)")
     st.dataframe(top_5_150, hide_index="True")
 
 with col[1]:
     st.markdown('#### Mean Movie Ratings By Genre')
-    #mean rating by genre
     df_satisfaction = df.groupby('genres')['rating'].mean().reset_index()
-    
-    
     fig1, ax1 = plt.subplots()
-
-    # Create the barplot
     sns.barplot(data=df_satisfaction, x="rating", y="genres", ax=ax1, color='r')
-
-    # Optional: add title or adjust layout
-
-    # Display in Streamlit
     st.pyplot(fig1)
 
 
     st.markdown('#### Viewer Satisfaction Across Release Years')
     df_decade = df.groupby('decade')['rating'].mean().reset_index()
-
-    # Create the figure and axes
     fig2, ax2 = plt.subplots()
-
-    # Create the lineplot
     sns.lineplot(x="decade", y="rating", data=df_decade, ax=ax2, color='r')
-
-    # Rotate x-axis labels
     plt.xticks(rotation=25)
-
-    # Show in Streamlit
     st.pyplot(fig2)
 
 with col[2]:
