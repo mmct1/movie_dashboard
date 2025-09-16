@@ -41,7 +41,7 @@ with col[1]:
     fig, ax = plt.subplots()
 
     # Create the barplot
-    sns.barplot(data=df_satisfaction, x="rating", y="genre", ax=ax)
+    sns.barplot(data=df_satisfaction, x="rating", y="genres", ax=ax)
 
     # Optional: add title or adjust layout
     ax.set_title("Average Rating by Genre")
